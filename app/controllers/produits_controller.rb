@@ -10,8 +10,13 @@ class ProduitsController < ApplicationController
     end
     
     def create 
-        @produit = Produit.new
+        @produit = Produit.new(produit_params)
         @produit = Produit.save
     end
+
+    private
+
+    def produit_params
+        params.require(:produit).permit(nom:, :description, :prix)
 
 end
